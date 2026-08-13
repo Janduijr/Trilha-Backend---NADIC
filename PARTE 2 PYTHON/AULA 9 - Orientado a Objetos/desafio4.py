@@ -1,4 +1,4 @@
-class livro:
+class Livro:
     def __init__(self, paginas = 0):
         self.paginas = paginas
         self.atual = 0
@@ -10,7 +10,7 @@ class livro:
         else:
             print('VOCE CHEGOU AO FIM DO LIVRO!')
             
-livro1 = livro(5)
+livro1 = Livro(5)
 livro1.passarpagina()
 livro1.passarpagina()
 livro1.passarpagina()

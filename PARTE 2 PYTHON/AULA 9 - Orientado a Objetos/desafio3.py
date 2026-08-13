@@ -1,4 +1,4 @@
-class churrasco:
+class Churrasco:
     def __init__(self, titulo = '', pessoas = 0):
         self.titulo = titulo
         self.pessoas = pessoas
@@ -14,5 +14,5 @@ class churrasco:
         print(f'cada pessoa tera que pagar R${(kg*82.40)/self.pessoas:.2f}')
     
 
-churrasco1 = churrasco('churracao sexta!', 15)
+churrasco1 = Churrasco('churracao sexta!', 15)
 churrasco1.analise()

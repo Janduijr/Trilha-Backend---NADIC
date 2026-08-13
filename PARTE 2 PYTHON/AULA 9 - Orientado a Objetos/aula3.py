@@ -1,4 +1,4 @@
-class banco:
+class Banco:
     def __init__(self, nome = '', numero = 0, saldo = 0):
         self.nome = nome
         self.numero = numero
@@ -18,7 +18,7 @@ class banco:
         else:
             print('saldo insuficiente!')
     
-jandui = banco('jandui', 132 , 20)
+jandui = Banco('jandui', 132 , 20)
 print(jandui)
 jandui.depositar()
 print(jandui)
