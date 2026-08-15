@@ -11,3 +11,4 @@ print(professor1.__dict__)
 
 funcionario1 = Funcionario('Alex', 49, 'zelador', 'limpeza')
 print(funcionario1.__dict__)
+funcionario1.estudar()
