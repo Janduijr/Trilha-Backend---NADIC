@@ -1,6 +1,7 @@
-from classes012 import Banco
+from classes018 import Banco
 
-jandui = Banco(1,'jandui', 130)
-print(jandui)
-jandui.pede_senha()
+jandui = Banco(1,'jandui', 130, 'jandui')
+jandui.depositar()
+jandui.sacar()
+
 print(jandui)
