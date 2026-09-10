@@ -33,7 +33,7 @@ class Banco:
             else:
                 print('saldo insuficiente!')
         else:
-            print('Senha invalida!')
+            print('Senha invalida!!')
     
     def pede_senha(self):
         senha = str(input('Digite a senha: '))
