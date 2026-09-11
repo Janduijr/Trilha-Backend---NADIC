@@ -3,11 +3,12 @@ class Funcionario(ABC):
     def __init__(self, nome, valor):
         self.nome = nome
         self._salario = valor
+        self.bonus = self.salario
         self.calcular_bonus()
         
     
     def __str__(self):
-        return f'{self.nome} e um {self.__class__.__name__} e recebe {self.salario}'
+        return f'{self.nome} e um {self.__class__.__name__} e recebe R${self.salario:.2f} sendo R${self.salario-self.bonus:.2f} de bonus'
     
     @property
     def salario(self):
