@@ -10,8 +10,6 @@ class Animal(ABC):
         
 
 class Pato(Animal):
-    def __init__(self, nome=''):
-        super().__init__(nome)
     
     def emitir_som(self):
         print(f'{self.nome} e um {self.__class__.__name__} e esta gritando qua!')
