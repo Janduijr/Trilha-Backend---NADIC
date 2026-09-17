@@ -1,0 +1,12 @@
+{% extends 'projetos/base.html' %}
+
+{% block conteudo %}
+    <ul>
+        {% for topic in topics %}
+            <li>{{ topic }}</li>
+        {% empty %}
+            <li>Nao ha itens!</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
