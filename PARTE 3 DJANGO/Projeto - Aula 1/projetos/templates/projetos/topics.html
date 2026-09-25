@@ -1,0 +1,13 @@
+{% extends 'projetos/base.html' %}
+
+{% block conteudo %}
+    <p>topicos:</p>
+    <ul>
+        {% for topic in topics %}
+            <li><a href="{% url 'topic' topic.id %}">{{ topic }}</a></li>
+        {% empty %}
+            <li>Nao ha itens!</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from projetos.models import topic, entry
+from projetos.models import Topic, entry
 
-admin.site.register(topic)
+admin.site.register(Topic)
 admin.site.register(entry)

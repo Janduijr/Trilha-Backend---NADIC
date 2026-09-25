@@ -1,9 +1,14 @@
 {% extends 'projetos/base.html' %}
 
 {% block conteudo %}
+    <h3>topico:{{ topic }}</h3>
+    <p>entries: </p>
     <ul>
-        {% for topic in topics %}
-            <li>{{ topic }}</li>
+        {% for entry in entries %}
+            <li>
+                <p>{{ entry.text|linebreaks }}</p>
+                <p>{{ entry.date_added|date:'M D, Y H:i' }}</p>
+            </li>
         {% empty %}
             <li>Nao ha itens!</li>
         {% endfor %}
