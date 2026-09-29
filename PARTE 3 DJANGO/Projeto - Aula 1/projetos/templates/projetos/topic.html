@@ -2,7 +2,7 @@
 
 {% block conteudo %}
     <h3>topico:{{ topic }}</h3>
-    <p>entries: </p>
+    <p>Anotacoes: </p>
     <ul>
         {% for entry in entries %}
             <li>
@@ -14,6 +14,6 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'new_entry' %}">Criar novo entry</a>
+    <a href="{% url 'new_entry' topic.id %}">Criar novo entry</a>
 
 {% endblock %}
