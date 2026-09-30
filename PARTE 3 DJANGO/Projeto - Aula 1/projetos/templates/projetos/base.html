@@ -6,8 +6,15 @@
     <title>projeto</title>
 </head>
 <body>
-    <a href="{% url 'index' %}"><h1>Inicio</h1></a>
-    <a href="{% url 'topics' %}"><h1>topic</h1></a>
+    <p>
+        <a href="{% url 'index' %}"><h1>Inicio</h1></a>
+        <a href="{% url 'topics' %}"><h1>topic</h1></a>
+        {% if user.is_authenticated %}
+            ola, {{ user.username }}
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+    </p>
     {% block conteudo %}
     {% endblock %}
 </body>
