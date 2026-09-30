@@ -1,0 +1,15 @@
+{% extends 'projetos/base.html' %}
+
+{% block conteudo %}
+
+    <p><a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
+
+    <p>Editar entrada:</p>
+
+    <form action="{% url 'edit_entry' entry.id %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name="submit">Editar</button>
+    </form>
+
+{% endblock conteudo %}
