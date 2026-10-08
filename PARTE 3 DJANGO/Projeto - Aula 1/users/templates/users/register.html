@@ -1,0 +1,16 @@
+{% extends 'projetos/base.html' %}
+
+{% block conteudo %}
+    {% if form.errors %}
+        <p>Informacoes de login ou senha incorretos!</p>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button name="submit">Registrar</button>
+        <input type="hidden" name="next" value="{% url 'index' %}">
+    </form>
+
+{% endblock conteudo %}
