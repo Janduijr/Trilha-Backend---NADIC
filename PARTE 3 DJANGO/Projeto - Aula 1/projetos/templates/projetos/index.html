@@ -1,4 +1,21 @@
 {% extends 'projetos/base.html'%}
+
+{% block header %}
+    <div class="jumbotron">
+        <h1>Acompanhe o seu aprendizado.</h1>
+    </div>
+{% endblock header %}
+
 {% block conteudo %}
-    <h1>Site de topicos e anotacoes</h1>
+    {% if user.is_authenticated %}
+        <h2>Bem vindo ao seu site de anotacoes</h2>
+
+    {% else %}
+        <h2><a href="{% url 'register' %}">crie uma conta</a> para utilizar o nosso projeto 
+            listando assim os tropicos que voce esta aprendendo.</h2>
+    {% endif %}
+    <h2>
+        Sempre que aprender algo novo sobre um topico,
+        faca uma entrada resulmindo o que voce aprendeu
+    </h2>
 {% endblock %}

@@ -1,15 +1,23 @@
 {% extends 'projetos/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h1>Criar conta</h1>
+{% endblock header %}
 
 {% block conteudo %}
     {% if form.errors %}
-        <p>Informacoes de login ou senha incorretos!</p>
+        <p style="color: red;">* O nome de usuario nao pode conter caracters especiais!</p>
+        <p style="color: red;">* A senha deve ter mais de 8 digitos!</p>
     {% endif %}
 
-    <form action="{% url 'register' %}" method="post">
+    <form action="{% url 'register' %}" method="post" class="ul-none form">
         {% csrf_token %}
-        {{form.as_p}}
-
-        <button name="submit">Registrar</button>
+        {% bootstrap_form form %}
+        
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Registrar</button>
+        {% endbuttons %}
         <input type="hidden" name="next" value="{% url 'index' %}">
     </form>
 

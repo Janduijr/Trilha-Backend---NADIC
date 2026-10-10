@@ -1,15 +1,18 @@
 {% extends 'projetos/base.html' %}
 
+{% block header %}
+ <h1>topicos:</h1>
+{% endblock header %}
+
 {% block conteudo %}
-    <p>topicos:</p>
     <ul>
         {% for topic in topics %}
-            <li><a href="{% url 'topic' topic.id %}">{{ topic }}</a></li>
+            <li><h3><a href="{% url 'topic' topic.id %}">{{ topic }}</a></h3></li>
         {% empty %}
-            <li>Nao ha itens!</li>
+            <li><h3>Nao ha itens!</h3></li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'new_topic' %}">Adicionar Topico</a>
+    <h3><a href="{% url 'new_topic' %}">Adicionar Topico</a></h3>
 
 {% endblock %}

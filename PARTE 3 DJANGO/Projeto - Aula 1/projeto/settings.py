@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projetos',
     'users',
+    
+    #app de terceiros
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,7 @@ MAILERS = {
 }
 
 LOGIN_URL = '/users/login'
+
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}
