@@ -1,0 +1,10 @@
+{% extends 'aplicativo/base.html' %}
+
+{% block conteudo %}
+    {% for filme in filmes %}
+        <a href="{% url 'filme_detalhes' filme.id %}"><p>titulo: {{filme.titulo}}</p></a>
+    {% empty %}
+        <p>Nao ha filmes!</p>
+    {% endfor %}
+
+{% endblock conteudo%}

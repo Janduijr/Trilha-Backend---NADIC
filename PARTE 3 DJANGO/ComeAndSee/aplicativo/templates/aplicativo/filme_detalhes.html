@@ -1,0 +1,15 @@
+{% extends 'aplicativo/base.html' %}
+
+{% block conteudo %}
+
+    <p>titulo: {{filme.titulo}}</p>
+    <p>ano: {{filme.ano}}</p>
+    <p>diretor: {{filme.diretor}}</p>
+    <p>sinopse: {{filme.sinopse}}</p>
+    <p>duracao: {{filme.duracao}} minutos</p>
+    <p>gerenos:</p>
+    {% for genero in filme.generos.all %}
+        <p>{{genero.nome}}</p>
+    {% endfor %}
+
+{% endblock conteudo%}
