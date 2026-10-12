@@ -12,4 +12,11 @@
         <p>{{genero.nome}}</p>
     {% endfor %}
 
+    {% if review %}
+        <a href="{% url 'deletar_review' filme.id %}">Excluir review</a>
+    {% else %}
+        <a href="{% url 'review' filme.id %}">Review</a>
+    {% endif %}
+    
+
 {% endblock conteudo%}

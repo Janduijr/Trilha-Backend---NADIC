@@ -12,27 +12,29 @@
         <div class="conteudo-cabecalho">
             
             <!-- Logo -->
-            <a href="#" class="logo">
-                <span class="circulos-logo">
-                    <span class="circulo laranja"></span>
-                    <span class="circulo verde"></span>
-                    <span class="circulo azul"></span>
-                </span>
-                <span class="texto-logo">Come and See</span>
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'imagens/comeandsee.png' %}" alt="Come and See Logo" class="img-logo" width="30px">
+                <span class="texto-logo">COME AND SEE</span>
             </a>
 
             <!-- Navegação Principal -->
             <nav class="menu-navegacao">
                 <!-- Usuário -->
                 <div class="item-usuario">
-                    <img src="https://via.placeholder.com/28" alt="Avatar do Usuário" class="foto-usuario">
-                    <span class="nome-usuario">JANDUIJR</span>
-                    <span class="seta-baixo">▾</span>
+                    {% if user.is_authenticated %}
+                        <img src="https://via.placeholder.com/28" alt="Avatar do Usuário" class="foto-usuario">
+                        <span class="nome-usuario">{{user.username}}</span>
+                        <span class="seta-baixo">▾</span>
+                        <a class="link-menu" href="{% url 'logout' %}">Sair</a>
+                    {% else %}
+                       <a class="link-menu" href="{% url 'login' %}">Entrar</a>
+                       <a class="link-menu" href="{% url 'register' %}">Registrar</a>
+                    {% endif %}
                 </div>
 
                 <!-- Links -->
                 <a href="{% url 'listar_filmes' %}" class="link-menu">FILMES</a>
-                <a href="#" class="link-menu">LISTAS</a>
+                <a href="{% url 'listar_filmes_meus' %}" class="link-menu">MEUS FILMES</a>
                 <a href="#" class="link-menu">MEMBROS</a>
                 <a href="#" class="link-menu">DIÁRIO</a>
 

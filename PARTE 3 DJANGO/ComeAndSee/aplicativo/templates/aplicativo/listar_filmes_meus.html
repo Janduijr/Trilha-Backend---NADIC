@@ -1,0 +1,14 @@
+{% extends 'aplicativo/base.html' %}
+
+{% block conteudo %}
+    {% for filme in filmes %}
+        {% if filme.filme.poster %}
+            <a href="{% url 'filme_detalhes' filme.filme.id %}"><img src="{{ filme.filme.poster.url }}" alt="Pôster do filme {{ filme.filme.titulo }}" width="100"></a>
+        {% else %}
+            <p>Sem pôster disponível.</p>
+        {% endif %}
+    {% empty %}
+        <p>Nao ha filmes!</p>
+    {% endfor %}
+
+{% endblock conteudo%}

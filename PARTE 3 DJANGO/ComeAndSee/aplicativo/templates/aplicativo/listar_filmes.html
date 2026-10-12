@@ -2,7 +2,11 @@
 
 {% block conteudo %}
     {% for filme in filmes %}
-        <a href="{% url 'filme_detalhes' filme.id %}"><p>titulo: {{filme.titulo}}</p></a>
+        {% if filme.poster %}
+            <a href="{% url 'filme_detalhes' filme.id %}"><img src="{{ filme.poster.url }}" alt="Pôster do filme {{ filme.titulo }}" width="100"></a>
+        {% else %}
+            <p>Sem pôster disponível.</p>
+        {% endif %}
     {% empty %}
         <p>Nao ha filmes!</p>
     {% endfor %}

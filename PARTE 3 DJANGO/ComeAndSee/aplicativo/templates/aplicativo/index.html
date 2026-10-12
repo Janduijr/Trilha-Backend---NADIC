@@ -1,0 +1,50 @@
+{% extends 'aplicativo/base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<main class="secao-hero">
+    
+    <!-- Wrapper que impede o layout de esticar demais em monitores grandes -->
+    <div class="wrapper-hero">
+        
+        <!-- Conteúdo de Texto -->
+        <div class="conteudo-hero">
+            <h1 class="titulo-hero">
+                Acompanhe os filmes que já viu.<br>
+                Guarde os que deseja ver.<br>
+                Partilhe a sua paixão pelo cinema.
+            </h1>
+            
+            <p class="sinopse-hero">
+                Bem-vindo ao <strong>Come and See</strong>, a sua plataforma de registo e crítica de cinema. Descubra novos títulos, faça a sua avaliação e organize o seu diário cinematográfico pessoal.
+            </p>
+
+            <div class="botoes-hero">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'listar_filmes' %}" class="btn-play">
+                        <span class="icone">▶</span> Explorar Filmes
+                    </a>
+                    <a href="{% url 'listar_filmes_meus' %}" class="btn-info">
+                        <span class="icone">ℹ</span> A Minha Lista
+                    </a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="btn-play">
+                        <span class="icone">▶</span> Criar Conta Gratuita
+                    </a>
+                    <a href="{% url 'listar_filmes' %}" class="btn-info">
+                        <span class="icone">ℹ</span> Ver Filmes
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Imagem de Destaque -->
+        <div class="container-imagem-hero">
+            <img src="{% static 'imagens/index.png' %}" alt="Come and See" class="imagem-hero">
+            <div class="overlay-gradiente"></div>
+        </div>
+
+    </div>
+
+</main>
+{% endblock conteudo %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicativo',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Diretório no sistema de arquivos onde as fotos serão salvas
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL para acessar os arquivos via navegador
+MEDIA_URL = '/media/'

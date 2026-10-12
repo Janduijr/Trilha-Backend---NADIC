@@ -1,0 +1,18 @@
+{% extends 'aplicativo/base.html' %}
+
+{% block conteudo %}
+
+    {% if form.errors %}
+        <h2>Informacoes de login ou senha invalidas!</h2>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button name="submit">Login</button>
+        <input type="hidden" name="next" value="{% url 'index' %}">
+    </form>
+
+
+{% endblock conteudo %}
