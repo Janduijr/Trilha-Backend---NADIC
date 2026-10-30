@@ -1,14 +1,28 @@
 {% extends 'aplicativo/base.html' %}
 
 {% block conteudo %}
+<div class="area-login">
+    <div class="caixa-login">
+        <h1 class="titulo-login">Criar Conta</h1>
 
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
+        {% if form.errors %}
+            <div class="erro">
+                <p>Por favor, corrija os erros abaixo.</p>
+            </div>
+        {% endif %}
 
-        <button name="submit">Registrar</button>
-        <input type="hidden" name="next" value="{% url 'index' %}">
+        <form class="formulario-login" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="campos">
+                {{ form.as_p }}
+            </div>
 
-    </form>
+            <button type="submit" name="submit" class="botao-entrar">Registrar</button>
+            <input type="hidden" name="next" value="{% url 'index' %}">
+        </form>
 
-{% endblock conteudo%}
+        <a href="{% url 'login' %}" class="link-alternativo">Já tem uma conta? Entrar</a>
+    </div>
+</div>
+{% endblock conteudo %}

@@ -1,18 +1,26 @@
 {% extends 'aplicativo/base.html' %}
 
 {% block conteudo %}
+<div class="area-login">
+    <div class="caixa-login">
+        <h1 class="titulo-login">Entrar</h1>
 
-    {% if form.errors %}
-        <h2>Informacoes de login ou senha invalidas!</h2>
-    {% endif %}
+        {% if form.errors %}
+            <div class="erro">
+                <p>Informações de login ou senha inválidas!</p>
+            </div>
+        {% endif %}
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
+        <form class="formulario-login" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="campos">
+                {{ form.as_p }}
+            </div>
 
-        <button name="submit">Login</button>
-        <input type="hidden" name="next" value="{% url 'index' %}">
-    </form>
-
-
+            <button type="submit" name="submit" class="botao-entrar">Login</button>
+            <input type="hidden" name="next" value="{% url 'index' %}">
+        </form>
+    </div>
+</div>
 {% endblock conteudo %}

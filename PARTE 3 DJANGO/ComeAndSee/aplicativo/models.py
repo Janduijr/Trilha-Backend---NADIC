@@ -26,6 +26,18 @@ class Filme(models.Model):
 class MeusFilmes(models.Model):
     filme = models.ForeignKey(Filme, on_delete=models.CASCADE)
     dono = models.ForeignKey(User, on_delete=models.CASCADE)
+    nota = models.IntegerField(null=True, blank=True, choices= [
+        (5, 'Excelente'),
+        (4, 'Bom'),
+        (3, 'Regular'),
+        (2, 'Ruim'),
+        (1, 'Péssimo')
+    ])
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['filme', 'dono'], name='unique_filme_dono')
+        ]
     
     def __str__(self):
          return f'{self.filme}({self.dono})'

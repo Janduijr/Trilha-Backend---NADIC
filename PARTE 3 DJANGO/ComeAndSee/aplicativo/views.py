@@ -23,7 +23,7 @@ def filme_detalhes(request, id):
     review = None
     
     if request.user.is_authenticated:
-        review = MeusFilmes.objects.filter(filme=filme_detalhe, dono=request.user)
+        review = MeusFilmes.objects.filter(filme=filme_detalhe, dono=request.user).first()
         
     context = {
         'filme': filme_detalhe,
@@ -32,12 +32,13 @@ def filme_detalhes(request, id):
     return render(request, 'aplicativo/filme_detalhes.html', context)
 
 @login_required
-def review(request, id):
+def review(request, id, nota=None):
     filme_escolhido = get_object_or_404(Filme, id=id)
     
     MeusFilmes.objects.get_or_create(
         filme = filme_escolhido,
         dono = request.user,
+        defaults={'nota': nota}
     )
     
     return redirect('filme_detalhes', id=id)

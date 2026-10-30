@@ -1,22 +1,63 @@
 {% extends 'aplicativo/base.html' %}
 
 {% block conteudo %}
-
-    <p>titulo: {{filme.titulo}}</p>
-    <p>ano: {{filme.ano}}</p>
-    <p>diretor: {{filme.diretor}}</p>
-    <p>sinopse: {{filme.sinopse}}</p>
-    <p>duracao: {{filme.duracao}} minutos</p>
-    <p>gerenos:</p>
-    {% for genero in filme.generos.all %}
-        <p>{{genero.nome}}</p>
-    {% endfor %}
-
-    {% if review %}
-        <a href="{% url 'deletar_review' filme.id %}">Excluir review</a>
-    {% else %}
-        <a href="{% url 'review' filme.id %}">Review</a>
-    {% endif %}
+<div class="area-detalhes">
     
+    <!-- Coluna 1: Pôster -->
+    {% if filme.poster %}
+        <div class="coluna-poster">
+            <img src="{{ filme.poster.url }}" alt="Poster de {{ filme.titulo }}" class="poster-detalhe">
+        </div>
+    {% else %}
+        <div class="coluna-poster">
+            <img src="https://via.placeholder.com/230x345/2c3440/9ab?text=Sem+Poster" alt="Poster de {{ filme.titulo }}" class="poster-detalhe">
+        </div>
+    {% endif %}
 
-{% endblock conteudo%}
+    <!-- Coluna 2: Informações Principais -->
+    <div class="coluna-info">
+        <h1 class="titulo-detalhe">{{ filme.titulo }}</h1>
+        
+        <div class="meta-detalhe">
+            <span class="ano">{{ filme.ano }}</span> 
+            Dirigido por <span class="diretor">{{ filme.diretor }}</span>
+        </div>
+
+        <div class="sinopse-detalhe">
+            <p>{{ filme.sinopse }}</p>
+        </div>
+
+        <div class="tags-detalhe">
+            <span class="tag">{{ filme.duracao }} mins</span>
+            {% for genero in filme.generos.all %}
+                <span class="tag">{{ genero.nome }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Coluna 3: Painel de Ações (Review) -->
+    <div class="coluna-acoes">
+        <div class="cartao-acoes">
+            
+            <div class="bloco-avaliacao">
+                <span class="texto-avaliacao">{% if review %}Sua Nota{% else %}Avaliar{% endif %}</span>
+                <div class="avaliacao-estrelas">
+                    <a href="{% url 'review_nota' filme.id 5 %}" class="estrela {% if review.nota >= 5 %}marcada{% endif %}">★</a>
+                    <a href="{% url 'review_nota' filme.id 4 %}" class="estrela {% if review.nota >= 4 %}marcada{% endif %}">★</a>
+                    <a href="{% url 'review_nota' filme.id 3 %}" class="estrela {% if review.nota >= 3 %}marcada{% endif %}">★</a>
+                    <a href="{% url 'review_nota' filme.id 2 %}" class="estrela {% if review.nota >= 2 %}marcada{% endif %}">★</a>
+                    <a href="{% url 'review_nota' filme.id 1 %}" class="estrela {% if review.nota >= 1 %}marcada{% endif %}">★</a>
+                </div>
+            </div>
+
+            {% if review %}
+                <a href="{% url 'deletar_review' filme.id %}" class="btn-acao vermelho">Excluir review</a>
+            {% else %}
+                <a href="{% url 'review' filme.id %}" class="btn-acao verde">Adicionar Review</a>
+            {% endif %}
+            
+        </div>
+    </div>
+
+</div>
+{% endblock conteudo %}
